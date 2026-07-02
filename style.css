@@ -701,6 +701,220 @@ td a:hover{
 .orange{background:#ff9f43}
 .pink{background:#ff6b81}
 .merah{background:#ff4757}
-*{
- 
+/* JELAJAHI SECTION FIXES */
+#jelajahi .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
 
+#jelajahi .card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  height: auto;
+}
+
+#jelajahi .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  background: #f8f9ff;
+}
+
+#jelajahi .card .icon-box {
+  width: 60px;
+  height: 60px;
+  background: #eef1ff;
+  color: #4e6bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+#jelajahi .card:hover .icon-box {
+  background: #4e6bff;
+  color: white;
+}
+
+#jelajahi .card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e2a78;
+  margin-bottom: 10px;
+}
+
+#jelajahi .card p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* RESPONSIVE JELAJAHI */
+@media(max-width: 900px) {
+  #jelajahi .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 600px) {
+  #jelajahi .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* TENTANG SECTION FIXES */
+#tentang .tentang-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+#tentang .tentang-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+  transition: 0.3s;
+}
+
+#tentang .tentang-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+#tentang .tentang-item .icon {
+  width: 55px;
+  height: 55px;
+  background: #eef1ff;
+  color: #4e6bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+#tentang .tentang-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+#tentang .tentang-item b {
+  font-size: 16px;
+  color: #1e2a78;
+  margin-bottom: 5px;
+}
+
+#tentang .tentang-item p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+#tentang .box {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #1e2a78, #4e6bff);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  box-shadow: 0 15px 40px rgba(78, 107, 255, 0.3);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#tentang .box::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  top: -25%;
+  left: -25%;
+}
+
+@media(max-width: 900px) {
+  #tentang .tentang-wrap {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+/* GLOBAL RESPONSIVE RULES */
+@media(max-width: 992px) {
+  .hero-home {
+    padding: 80px 40px;
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  .hero-home .hero-right img {
+    max-width: 100%;
+    height: auto;
+  }
+  .section, .footer {
+    padding: 60px 40px;
+  }
+}
+
+@media(max-width: 768px) {
+  .nav {
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .nav .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .nav a {
+    margin: 0;
+  }
+  .hero-home {
+    padding: 60px 20px;
+  }
+  .hero-home h1 {
+    font-size: 32px;
+  }
+  .stats {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .section, .footer {
+    padding: 40px 20px;
+  }
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+}

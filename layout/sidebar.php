@@ -4,7 +4,14 @@ if(!isset($title)) $title = '';
 ?>
 
 <div class="sidebar">
-  <h2>🎓 STI 2024 Class</h2>
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
+      <h2 style="display:flex; align-items:center; gap:8px; font-size:18px; line-height:1.2; margin:0;">
+        <i class="fa fa-graduation-cap"></i> STI 2024 Class
+      </h2>
+      <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.remove('show')" style="color:white; margin:0; padding:0;">
+          <i class="fa fa-times"></i>
+      </button>
+  </div>
 
   <p class="menu-title">MAIN MENU</p>
 

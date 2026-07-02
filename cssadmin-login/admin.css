@@ -887,3 +887,35 @@ body{background:#f4f6fb;}
 .switch input:checked + .slider:before{
   transform:translateX(22px);
 }
+
+/* Fix Aksi Wrap */
+.table td:last-child { white-space: nowrap; }
+
+/* Menu Toggle Button */
+.menu-toggle { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: #333; margin-right: 15px; }
+
+/* RESPONSIVE LAYOUT ADMIN */
+@media(max-width: 768px) {
+  .admin-wrap { flex-direction: column; }
+  .sidebar { 
+      position: fixed; 
+      left: -250px; 
+      top: 0; 
+      z-index: 1000; 
+      transition: 0.3s; 
+      box-shadow: 2px 0 15px rgba(0,0,0,0.2); 
+  }
+  .sidebar.show { left: 0; }
+  .menu-toggle { display: block; }
+  
+  .content { margin-left: 0; padding: 15px; width: 100%; }
+  .stats, .grid-2, .mk-grid, .jadwal-grid, .tugas-grid, .gallery-grid, .user-grid, .setting-grid { grid-template-columns: 1fr; }
+  .setting-card.full { grid-column: 1; }
+  .topbar { flex-direction: row; justify-content: space-between; align-items: center; gap: 10px; margin-bottom:15px; }
+  
+  /* Tables */
+  .card { padding: 15px; }
+  .table th, .table td { padding: 10px 5px; font-size: 11px; }
+  .card-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .search { width: 100%; margin-left: 0 !important; }
+}

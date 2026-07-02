@@ -9,7 +9,14 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <?php include 'components/navbar.php'; ?>
+=======
+<?php 
+include 'koneksi.php';
+include 'components/navbar.php'; 
+?>
+>>>>>>> 1bc606a (Menambahkan sistem kelas fiks)
 
 <!-- HERO -->
 <div class="hero-page">
@@ -22,6 +29,7 @@
 
   <div class="galeri">
 
+<<<<<<< HEAD
     <!-- CARD -->
     <div class="galeri-card">
       <img src="img/ui.jpg">
@@ -94,6 +102,36 @@
         <p>25 Mei 2024</p>
       </div>
     </div>
+=======
+    <?php 
+    $q = mysqli_query($conn, "SELECT * FROM gallery ORDER BY id DESC");
+    if(mysqli_num_rows($q) > 0):
+        $tags = ['biru', 'ungu', 'hijau', 'orange', 'pink', 'merah'];
+        $i = 0;
+        while($d = mysqli_fetch_assoc($q)):
+            $tag = $tags[$i % count($tags)];
+            $i++;
+    ?>
+    <!-- CARD -->
+    <div class="galeri-card">
+      <?php if(strpos($d['gambar'], '.') !== false && strlen($d['gambar']) < 30): ?>
+          <img src="img/<?= htmlspecialchars($d['gambar']) ?>">
+      <?php else: ?>
+          <img src="uploads/<?= htmlspecialchars($d['gambar']) ?>">
+      <?php endif; ?>
+      <div class="galeri-text">
+        <span class="tag <?= $tag ?>">Gallery</span>
+        <h4><?= htmlspecialchars($d['judul']) ?></h4>
+        <p><?= htmlspecialchars($d['deskripsi']) ?></p>
+      </div>
+    </div>
+    <?php 
+        endwhile; 
+    else:
+        echo "<p>Belum ada dokumentasi.</p>";
+    endif;
+    ?>
+>>>>>>> 1bc606a (Menambahkan sistem kelas fiks)
 
   </div>
 

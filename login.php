@@ -39,7 +39,7 @@ if(isset($_POST['login'])){
     if($data){
 
         // cek password
-        if($password == $data['password']){
+        if(password_verify($password, $data['password'])){
 
             $_SESSION['login'] = true;
 
@@ -146,13 +146,6 @@ onclick="togglePassword()">
 Remember me
 
 </label>
-
-<a href="register.php">
-
-Register?
-
-</a>
-
 </div>
 
 <?php if($error!=""): ?>

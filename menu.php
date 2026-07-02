@@ -1,5 +1,7 @@
-<?php include 'components/navbar.php'; ?>
-<?php include 'data-anggota.php'; ?>
+<?php 
+include 'koneksi.php';
+include 'components/navbar.php'; 
+?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -20,11 +22,15 @@
 
 <body>
 
+<?php
+$q_count = mysqli_query($conn, "SELECT COUNT(*) as t FROM anggota");
+$total_mhs = mysqli_fetch_assoc($q_count)['t'];
+?>
 <div class="hero">
 
     <h1>Anggota Kelas</h1>
 
-    <p>20 mahasiswa STI Angkatan 2024</p>
+    <p><?= $total_mhs ?> mahasiswa STI Angkatan 2024</p>
 
 </div>
 
@@ -44,7 +50,10 @@
 
     <div class="grid" id="anggotaGrid">
 
-    <?php foreach($anggota as $a): ?>
+    <?php 
+    $q = mysqli_query($conn, "SELECT * FROM anggota ORDER BY nama ASC");
+    while($a = mysqli_fetch_assoc($q)): 
+    ?>
 
         <div class="card">
 
@@ -56,19 +65,19 @@
 
             <h3>
 
-                <?= $a['nama']; ?>
+                <?= htmlspecialchars($a['nama']); ?>
 
             </h3>
 
             <p>
 
-                <?= $a['nim']; ?>
+                <?= htmlspecialchars($a['nim']); ?>
 
             </p>
 
         </div>
 
-    <?php endforeach; ?>
+    <?php endwhile; ?>
 
     </div>
 

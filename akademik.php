@@ -1,4 +1,5 @@
 <?php 
+<<<<<<< HEAD
 include 'components/navbar.php';
 
 /* ======================
@@ -54,6 +55,35 @@ include 'data/jadwal.php';
 ?>
 
 
+=======
+include 'koneksi.php';
+include 'components/navbar.php';
+
+// Fetch Matakuliah
+$matkul_query = mysqli_query($conn, "SELECT * FROM matakuliah ORDER BY kode ASC");
+$matkul = [];
+while($row = mysqli_fetch_assoc($matkul_query)){
+    $matkul[] = $row;
+}
+
+// Fetch Jadwal and group by hari
+$jadwal_query = mysqli_query($conn, "SELECT j.*, m.nama_matkul FROM jadwal j LEFT JOIN matakuliah m ON j.id_matkul = m.id ORDER BY FIELD(j.hari, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'), j.jam_mulai ASC");
+$jadwal = [];
+while($row = mysqli_fetch_assoc($jadwal_query)){
+    $hari = $row['hari'];
+    if(!isset($jadwal[$hari])){
+        $jadwal[$hari] = [];
+    }
+    $jadwal[$hari][] = [
+        'nama' => $row['nama_matkul'],
+        'jam' => substr($row['jam_mulai'], 0, 5) . ' - ' . substr($row['jam_selesai'], 0, 5),
+        'ruangan' => $row['ruangan'],
+        'status' => $row['status']
+    ];
+}
+?>
+
+>>>>>>> 1bc606a (Menambahkan sistem kelas fiks)
 <!DOCTYPE html>
 <html>
 
@@ -130,25 +160,41 @@ placeholder="Cari mata kuliah...">
 
 <td>
 
+<<<<<<< HEAD
 <?= $m['kode'] ?>
+=======
+<?= htmlspecialchars($m['kode']) ?>
+>>>>>>> 1bc606a (Menambahkan sistem kelas fiks)
 
 </td>
 
 <td>
 
+<<<<<<< HEAD
 <?= $m['nama'] ?>
+=======
+<?= htmlspecialchars($m['nama_matkul']) ?>
+>>>>>>> 1bc606a (Menambahkan sistem kelas fiks)
 
 </td>
 
 <td>
 
+<<<<<<< HEAD
 <?= $m['sks'] ?>
+=======
+<?= htmlspecialchars($m['sks']) ?>
+>>>>>>> 1bc606a (Menambahkan sistem kelas fiks)
 
 </td>
 
 <td>
 
+<<<<<<< HEAD
 <?= $m['dosen'] ?>
+=======
+<?= htmlspecialchars($m['dosen']) ?>
+>>>>>>> 1bc606a (Menambahkan sistem kelas fiks)
 
 </td>
 
@@ -190,13 +236,18 @@ class="jadwal-card">
 
 <h3>
 
+<<<<<<< HEAD
 📅 <?= $hari ?>
+=======
+📅 <?= htmlspecialchars($hari) ?>
+>>>>>>> 1bc606a (Menambahkan sistem kelas fiks)
 
 </h3>
 
 
 <?php foreach($list as $j): ?>
 
+<<<<<<< HEAD
 <div class="item">
 
 <p class="nama">
@@ -208,6 +259,20 @@ class="jadwal-card">
 <span class="jam">
 
 <?= $j['jam'] ?>
+=======
+<div class="item" style="margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">
+
+<p class="nama" style="font-weight:600; margin-bottom:5px;">
+
+<?= htmlspecialchars($j['nama']) ?>
+
+</p>
+
+<span class="jam" style="font-size:12px; color:#666; display:block;">
+
+🕒 <?= htmlspecialchars($j['jam']) ?> <br>
+📍 <?= htmlspecialchars($j['ruangan']) ?> (<?= htmlspecialchars($j['status']) ?>)
+>>>>>>> 1bc606a (Menambahkan sistem kelas fiks)
 
 </span>
 

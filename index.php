@@ -18,9 +18,14 @@
 <a href="tentang.php" class="btn btn1">Kenali Kami</a>
 <a href="menu.php" class="btn btn2">Lihat Anggota</a>
 
+<?php
+include 'koneksi.php';
+$c_anggota = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as t FROM anggota"))['t'];
+$c_matkul = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as t FROM matakuliah"))['t'];
+?>
 <div class="stats">
-<div class="stat"><b>20+</b><br>Mahasiswa</div>
-<div class="stat"><b>9</b><br>Mata Kuliah</div>
+<div class="stat"><b><?= $c_anggota ?>+</b><br>Mahasiswa</div>
+<div class="stat"><b><?= $c_matkul ?></b><br>Mata Kuliah</div>
 <div class="stat"><b>3</b><br>Semester</div>
 </div>
 </div>
